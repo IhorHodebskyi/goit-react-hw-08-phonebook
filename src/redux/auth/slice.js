@@ -1,15 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { signUp, logIn, logOut, refreshUser } from "redux/auth/operations";
 import { initialState } from "./initialState";
-// import {
-// 	handleFulfilled,
-// 	handleFulfilledLogIn,
-// 	handleFulfilledLogOut,
-// 	handleFulfilledRefreshUser,
-// 	handleFulfilledSignUp,
-// 	handlePending,
-// 	handleRejected,
-// } from "./handlers";
 
 const handlePending = state => {
 	state.isLoading = true;
@@ -20,15 +11,15 @@ const authSlice = createSlice({
 	initialState,
 	extraReducers: builder => {
 		builder
-			.addCase(signUp.fulfilled, (state, action) => {
-				state.user = action.payload.user;
-				state.token = action.payload.token;
+			.addCase(signUp.fulfilled, (state, { payload }) => {
+				state.user = payload.user;
+				state.token = payload.token;
 				state.isLoggedIn = true;
 				state.isLoading = false;
 			})
-			.addCase(logIn.fulfilled, (state, action) => {
-				state.user = action.payload.user;
-				state.token = action.payload.token;
+			.addCase(logIn.fulfilled, (state, { payload }) => {
+				state.user = payload.user;
+				state.token = payload.token;
 				state.isLoggedIn = true;
 				state.isLoading = false;
 			})
@@ -37,12 +28,13 @@ const authSlice = createSlice({
 				state.token = null;
 				state.isLoggedIn = false;
 				state.isLoading = false;
+				state.error = null;
 			})
 			.addCase(refreshUser.pending, state => {
 				state.isRefreshing = true;
 			})
-			.addCase(refreshUser.fulfilled, (state, action) => {
-				state.user = action.payload;
+			.addCase(refreshUser.fulfilled, (state, { payload }) => {
+				state.user = payload;
 				state.isLoggedIn = true;
 				state.isRefreshing = false;
 				state.isLoading = false;
