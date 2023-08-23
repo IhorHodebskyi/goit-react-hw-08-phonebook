@@ -1,14 +1,19 @@
-import { Comment } from 'react-loader-spinner';
+import { Div } from "pages/Contacts.styled";
+import { ColorRing } from "react-loader-spinner";
 
 export const Loader = () => (
-  <Comment
-    visible={true}
-    height="80"
-    width="80"
-    ariaLabel="comment-loading"
-    wrapperStyle={{}}
-    wrapperClass="comment-wrapper"
-    color="#fff"
-    backgroundColor="#F4442E"
-  />
+	<>
+		<Div>
+			{" "}
+			<ColorRing
+				visible={true}
+				height="120"
+				width="120"
+				ariaLabel="blocks-loading"
+				wrapperStyle={{}}
+				wrapperClass="blocks-wrapper"
+				colors={["#e15b64", "#f47e60", "#f8b26a", "#abbd81", "#849b87"]}
+			/>{" "}
+		</Div>
+	</>
 );

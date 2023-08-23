@@ -6,42 +6,35 @@ import { selectContacts } from "redux/contacts/selectors";
 import { addContacts } from "redux/contacts/operations";
 import { Form, Label, Input, Button } from "./ContactForm.styled";
 import { ReactComponent as AddIcon } from "icons/add.svg";
-
-//Генерація унікальних ідентифікаторів для полів форми.
+import { Notify } from "notiflix";
 const nameInputId = nanoid();
 const numberInputId = nanoid();
 
-// Компонент ContactForm відповідає за форму додавання нового контакту
 export const ContactForm = () => {
 	const [name, setName] = useState("");
 	const [number, setNumber] = useState("");
 	const contacts = useSelector(selectContacts);
 	const dispatch = useDispatch();
 
-	// Обробка відправлення форми.
 	const handleSubmit = event => {
 		event.preventDefault();
 
-		// Перевіряємо, чи контакт з таким іменем вже існує в списку контактів
 		const isInContacts = contacts.some(
 			contact => contact.name.toLowerCase() === name.toLowerCase(),
 		);
 
-		// Перевіряє, чи існує контакт із таким самим ім'ям у списку контактів. Якщо контакт вже існує, виводиться попередження.
 		if (isInContacts) {
-			alert(`${name} вже в контактах☝️`);
+			Notify.info(`${name} already in contact☝️`);
 
 			return;
 		}
 
-		// Відправляємо дію для додавання нового контакту до Redux store
 		dispatch(addContacts({ name, number }));
 
 		setName("");
 		setNumber("");
 	};
 
-	// Обробка зміни значень полів форми.
 	const handleChange = event => {
 		const { name, value } = event.currentTarget;
 		switch (name) {
@@ -64,11 +57,9 @@ export const ContactForm = () => {
 					<Input
 						type="text"
 						name="name"
-						placeholder="Введіть ім'я"
+						placeholder="Enter a name"
 						value={name}
 						onChange={handleChange}
-						// pattern="^[^\d]+$"
-						title="Ім'я має містити лише літери, апострофи, дефіси та відступи"
 						required
 					/>
 				</Label>
@@ -78,20 +69,16 @@ export const ContactForm = () => {
 					<Input
 						type="tel"
 						name="number"
-						placeholder="Введіть номер телефону"
+						placeholder="Enter a phone number"
 						value={number}
 						onChange={handleChange}
-						// pattern="\+\d{12}"
-						// minlength="13"
-						// maxlength="13"
-						title="Номер телефону має починатися з +, а потім 12 цифр"
 						required
 					/>
 				</Label>
 
 				<Button type="submit">
-					<AddIcon fill="#f08080" width="25" height="25" />
-					Add contact{" "}
+					<AddIcon fill="#000000" width="25" height="25" />
+					Add contact
 				</Button>
 			</Form>
 			<Filter />

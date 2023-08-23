@@ -1,6 +1,4 @@
-@import-normalize;
-
-bring in normalize.css styles body {
+body {
 	background-attachment: fixed;
 	min-height: 100vh;
 }

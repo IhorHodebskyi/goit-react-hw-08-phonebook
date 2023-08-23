@@ -6,7 +6,6 @@ import { PrivateRoute } from "../PrivateRoute";
 import { RestrictedRoute } from "../RestrictedRoute";
 import { refreshUser } from "redux/auth/operations";
 import { useAuth } from "../../hooks/useAuth";
-// import PhoneIcons from '../PhoneIcons/PhoneIcons';
 import { Wrapper } from "./App.styled";
 
 const Home = lazy(() => import("pages/Home"));
@@ -15,25 +14,21 @@ const Login = lazy(() => import("pages/Login"));
 const Contacts = lazy(() => import("pages/Contacts"));
 
 export const App = () => {
-	const dispatch = useDispatch(); // Отримуємо функцію dispatch для відправки дій до Redux store
-	const { isRefreshing } = useAuth(); // Отримуємо стан аутентифікації користувача
+	const dispatch = useDispatch();
+	const { isRefreshing } = useAuth();
 
 	useEffect(() => {
-		dispatch(refreshUser()); // Викликаємо функцію оновлення користувача при монтажі компонента або зміні dispatch
+		dispatch(refreshUser());
 	}, [dispatch]);
 
-	// Перевіряємо, чи триває процес оновлення користувача
-	// Якщо так, відображаємо текст "Оновлення користувача..."
-	// Якщо ні, відображаємо структуру маршрутизації додатка
 	return isRefreshing ? (
 		<p>Оновлення користувача...</p>
 	) : (
 		<Wrapper>
 			<Routes>
 				<Route path="/" element={<Layout />}>
-					{/*Головна сторінка */}
 					<Route index element={<Home />} />
-					{/* Сторінка реєстрації користувача */}
+
 					<Route
 						path="/register"
 						element={
@@ -43,7 +38,7 @@ export const App = () => {
 							/>
 						}
 					/>
-					{/* Сторінка входу користувача */}
+
 					<Route
 						path="/login"
 						element={
@@ -53,7 +48,7 @@ export const App = () => {
 							/>
 						}
 					/>
-					{/* Сторінка контактів (доступна тільки для авторизованих користувачів) */}
+
 					<Route
 						path="/contacts"
 						element={
@@ -64,7 +59,7 @@ export const App = () => {
 						}
 					/>
 				</Route>
-				{/* Маршрут за замовчуванням (якщо ні один інший маршрут не співпадає) */}
+
 				<Route path="*" element={<Home />} />
 			</Routes>
 		</Wrapper>

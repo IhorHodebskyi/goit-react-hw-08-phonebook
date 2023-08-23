@@ -26,9 +26,8 @@ export const RegisterForm = () => {
 				<Input
 					type="text"
 					name="name"
-					placeholder="Введіть ім'я"
-					// pattern="^[^\d]+$"
-					title="Ім'я має містити лише літери, апострофи, дефіси та відступи"
+					placeholder="Enter a name"
+					title="The name must contain only letters, apostrophes, hyphens and indents"
 					required
 				/>
 			</Label>
@@ -37,9 +36,8 @@ export const RegisterForm = () => {
 				<Input
 					type="email"
 					name="email"
-					placeholder="Введіть адресу електронної пошти"
-					// pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
-					title="Будь ласка, введіть дійсну адресу електронної пошти"
+					placeholder="Enter your email address"
+					title="Please enter a valid email address"
 					required
 				/>
 			</Label>
@@ -48,9 +46,8 @@ export const RegisterForm = () => {
 				<Input
 					type="password"
 					name="password"
-					placeholder="Введіть пароль"
-					// pattern="^[a-zA-Z0-9!@#$%^&*()-_=+`~[\]{}|:<>/?]+$"
-					title="Пароль повинен містити тільки латинські літери (як великі, так і малі), цифри та інші символи"
+					placeholder="Enter your password"
+					title="The password must contain only Latin letters (both upper and lower case), numbers and other symbols"
 					required
 				/>
 			</Label>
