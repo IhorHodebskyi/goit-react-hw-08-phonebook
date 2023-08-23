@@ -7,6 +7,7 @@ import { RestrictedRoute } from "../RestrictedRoute";
 import { refreshUser } from "redux/auth/operations";
 import { useAuth } from "../../hooks/useAuth";
 import { Wrapper } from "./App.styled";
+import { Loader } from "components/Loader/Loader";
 
 const Home = lazy(() => import("pages/Home"));
 const Register = lazy(() => import("pages/Register"));
@@ -22,7 +23,7 @@ export const App = () => {
 	}, [dispatch]);
 
 	return isRefreshing ? (
-		<p>Оновлення користувача...</p>
+		<Loader />
 	) : (
 		<Wrapper>
 			<Routes>

@@ -1,30 +1,62 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { signUp, logIn, logOut, refreshUser } from "redux/auth/operations";
 import { initialState } from "./initialState";
-import {
-	handleFulfilled,
-	handleFulfilledLogOut,
-	handleFulfilledRefreshUser,
-	handleFulfilledSignUp,
-	handlePending,
-	handleRejected,
-} from "./handlers";
+// import {
+// 	handleFulfilled,
+// 	handleFulfilledLogIn,
+// 	handleFulfilledLogOut,
+// 	handleFulfilledRefreshUser,
+// 	handleFulfilledSignUp,
+// 	handlePending,
+// 	handleRejected,
+// } from "./handlers";
+
+const handlePending = state => {
+	state.isLoading = true;
+};
 
 const authSlice = createSlice({
 	name: "auth",
 	initialState,
-	extraReducers: builder =>
+	extraReducers: builder => {
 		builder
-			.addCase(signUp.fulfilled, handleFulfilledSignUp)
-			.addCase(logIn.fulfilled, handleFulfilledSignUp)
-			.addCase(logOut.fulfilled, handleFulfilledLogOut)
-			.addCase(refreshUser.fulfilled, handleFulfilledRefreshUser)
+			.addCase(signUp.fulfilled, (state, action) => {
+				state.user = action.payload.user;
+				state.token = action.payload.token;
+				state.isLoggedIn = true;
+				state.isLoading = false;
+			})
+			.addCase(logIn.fulfilled, (state, action) => {
+				state.user = action.payload.user;
+				state.token = action.payload.token;
+				state.isLoggedIn = true;
+				state.isLoading = false;
+			})
+			.addCase(logOut.fulfilled, state => {
+				state.user = { name: null, email: null };
+				state.token = null;
+				state.isLoggedIn = false;
+				state.isLoading = false;
+			})
+			.addCase(refreshUser.pending, state => {
+				state.isRefreshing = true;
+			})
+			.addCase(refreshUser.fulfilled, (state, action) => {
+				state.user = action.payload;
+				state.isLoggedIn = true;
+				state.isRefreshing = false;
+				state.isLoading = false;
+			})
+			.addCase(refreshUser.rejected, (state, { payload }) => {
+				state.isRefreshing = false;
+				state.error = payload;
+				state.isLoading = false;
+			})
 			.addMatcher(
-				({ type }) => type.endsWith("fulfilled"),
-				handleFulfilled,
-			)
-			.addMatcher(({ type }) => type.endsWith("rejected"), handleRejected)
-			.addMatcher(({ type }) => type.endsWith("pending"), handlePending),
+				action => action.type.endsWith("/pending"),
+				handlePending,
+			);
+	},
 });
 
 export const authReducer = authSlice.reducer;
