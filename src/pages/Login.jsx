@@ -1,10 +1,12 @@
 import { LoginForm } from "components/LoginForm/LoginForm";
 
-export default function Login() {
+const Login = () => {
 	return (
 		<>
 			<title>Login</title>
 			<LoginForm />
 		</>
 	);
-}
+};
+
+export default Login;

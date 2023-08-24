@@ -1,9 +1,18 @@
+import { Suspense } from "react";
 import { Wrapper, Title } from "./Home.styled";
+import { Outlet } from "react-router";
 
-export default function Home() {
+const Home = () => {
 	return (
-		<Wrapper>
-			<Title>Welcome to Phonebook!</Title>{" "}
-		</Wrapper>
+		<>
+			<Wrapper>
+				<Title>Welcome to Phonebook!</Title>{" "}
+				<Suspense>
+					<Outlet />
+				</Suspense>
+			</Wrapper>
+		</>
 	);
-}
+};
+
+export default Home;
