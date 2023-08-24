@@ -1,13 +1,13 @@
-import { useEffect, lazy, Suspense } from "react";
+import { useEffect, lazy } from "react";
 import { useDispatch } from "react-redux";
-import { Route, Routes } from "react-router-dom";
-import { Layout } from "../Layout/Layout";
+import { Navigate, Route, Routes } from "react-router-dom";
 import { PrivateRoute } from "../PrivateRoute";
 import { RestrictedRoute } from "../RestrictedRoute";
 import { refreshUser } from "redux/auth/operations";
 import { useAuth } from "../../hooks/useAuth";
 import { Wrapper } from "./App.styled";
 import { Loader } from "components/Loader/Loader";
+import { Layout } from "components/Layout/Layout";
 
 const Home = lazy(() => import("pages/Home"));
 const Register = lazy(() => import("pages/Register"));
@@ -31,26 +31,35 @@ export const App = () => {
 					<Route index element={<Home />} />
 
 					<Route
-						path="register"
+						path="/register"
 						element={
-							<RestrictedRoute redirectTo="login" component={<Register />} />
+							<RestrictedRoute
+								redirectTo="/login"
+								component={<Register />}
+							/>
 						}
 					/>
 
 					<Route
-						path="login"
+						path="/login"
 						element={
-							<RestrictedRoute redirectTo="contacts" component={<Login />} />
+							<RestrictedRoute
+								redirectTo="/contacts"
+								component={<Login />}
+							/>
 						}
 					/>
 
 					<Route
-						path="contacts"
+						path="/contacts"
 						element={
-							<PrivateRoute redirectTo="login" component={<Contacts />} />
+							<PrivateRoute
+								redirectTo="/login"
+								component={<Contacts />}
+							/>
 						}
 					/>
-					<Route path="*" element={<Home />} />
+					<Route path="*" element={<Navigate to="/" />} />
 				</Route>
 			</Routes>
 		</Wrapper>
