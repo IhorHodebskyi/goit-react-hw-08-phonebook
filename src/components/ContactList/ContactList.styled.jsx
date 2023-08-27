@@ -2,38 +2,50 @@ import styled from "styled-components";
 
 export const List = styled.ul`
 	display: flex;
-	justify-content: center;
 	flex-direction: column;
-	width: 400px;
-	padding: 12px;
-	border-radius: 4px;
-	background-color: rgba(0, 0, 0, 0.6);
-	border: 3px solid #000000;
+
+	gap: 12px;
 	margin: 0 auto;
+	padding: 20px;
+	max-width: 360px;
+
+	background-color: rgba(135, 207, 235, 0.1);
+	border-radius: 8px;
 `;
 
 export const Item = styled.li`
-	background-color: #ffffff;
-	border: 3px solid #000000;
-	padding: 10px;
-	border-radius: 4px;
-	margin-bottom: 5px;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	font-size: 20px;
+	gap: 32px;
+	padding: 0 0 0 8px;
+
+	background-color: rgba(135, 207, 235, 0.2);
+	border-radius: 8px;
+
+	& span:nth-child(2) {
+		margin-left: auto;
+	}
 `;
 
 export const Button = styled.button`
-	padding: 4px 8px;
-	font: inherit;
-	cursor: pointer;
-	border-radius: 4px 8px;
-	border: 3px solid #000000;
-	display: flex;
-	align-items: center;
+	padding: 8px 16px;
 
-	&:hover {
-		background-color: #b9bcd3;
+	color: rgba(0, 0, 0, 0.4);
+	font-size: 12px;
+
+	border: 0;
+	border-radius: 8px;
+	background-color: rgba(135, 207, 235, 0.5);
+	cursor: pointer;
+	scale: 1;
+	transition: background-color 1000ms
+		cubic-bezier(0.4, 0, 0.2, 1);
+	transition: scale 1000ms cubic-bezier(0.4, 0, 0.2, 1);
+	&:hover,
+	&:focus {
+		outline: none;
+		background-color: rgba(135, 207, 235, 0.7);
+		scale: 1.1;
 	}
 `;

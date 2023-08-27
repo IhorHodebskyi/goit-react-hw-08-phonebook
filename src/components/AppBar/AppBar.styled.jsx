@@ -4,8 +4,8 @@ export const Header = styled.header`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	margin: 0 auto 20px auto;
-	border: 3px solid #000000;
-	background-color: rgba(0, 0, 0, 0.6);
-	width: 640px;
+	height: 40px;
+	padding: 12px 0;
+
+	border-bottom: 1px solid #d4d4d4;
 `;

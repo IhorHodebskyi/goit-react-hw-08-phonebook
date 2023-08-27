@@ -36,6 +36,7 @@ export const RegisterForm = () => {
 	const dispatch = useDispatch();
 
 	const handleSubmit = (values, { resetForm }) => {
+		console.log(values);
 		dispatch(signUp(values));
 		resetForm();
 	};

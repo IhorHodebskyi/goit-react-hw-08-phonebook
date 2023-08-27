@@ -9,15 +9,26 @@ export const Wrapper = styled.div`
 `;
 
 export const Label = styled.label`
-	color: #000000;
-	font-size: 20px;
-	margin-bottom: 5px;
+	display: block;
+	margin-bottom: 16px;
 `;
 
 export const Input = styled.input`
-	width: 400px;
-	padding: 10px;
-	margin: 0 auto;
-	border-radius: 4px;
-	border: 3px solid #000000;
+	display: block;
+	width: 320px;
+	margin-top: 8px;
+	padding: 4px 8px;
+
+	border: 0;
+	border-radius: 8px;
+	background-color: rgba(135, 207, 235, 0.3);
+	transition: background-color,
+		scale 1000ms cubic-bezier(0.4, 0, 0.2, 1);
+	scale: 1;
+
+	&:focus {
+		outline: none;
+		background-color: rgba(135, 207, 235, 0.7);
+		scale: 1.1;
+	}
 `;

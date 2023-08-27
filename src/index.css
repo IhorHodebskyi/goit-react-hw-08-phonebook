@@ -1,6 +1,9 @@
+@import-normalize;
+
 body {
-	background-attachment: fixed;
-	min-height: 100vh;
+	margin: 0;
+
+	background-color: hsla(50, 25%, 53%, 0.75);
 }
 
 ul {

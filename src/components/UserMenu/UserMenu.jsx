@@ -10,10 +10,13 @@ export const UserMenu = () => {
 
 	return (
 		<Wrapper>
-			<Text>Welcome to Phonebook {name} </Text>{" "}
-			<Button type="button" onClick={() => dispatch(logOut())}>
+			<Text>Welcome to Phonebook {name} </Text>
+			<Button
+				type="button"
+				onClick={() => dispatch(logOut())}
+			>
 				Logout
-			</Button>{" "}
+			</Button>
 		</Wrapper>
 	);
 };

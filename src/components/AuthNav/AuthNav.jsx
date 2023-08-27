@@ -1,9 +1,14 @@
-import { Wrapper, Link } from "./AuthNav.styled";
+import { Link, NavList } from "./AuthNav.styled";
 
 export const AuthNav = () => {
 	return (
-		<Wrapper>
-			<Link to="/register">Register</Link> <Link to="/login">Log In</Link>{" "}
-		</Wrapper>
+		<NavList>
+			<li>
+				<Link to="/register">Sign Up</Link>
+			</li>
+			<li>
+				<Link to="/login">Log In</Link>
+			</li>
+		</NavList>
 	);
 };

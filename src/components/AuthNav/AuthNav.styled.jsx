@@ -1,17 +1,35 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
-export const Wrapper = styled.div``;
+export const NavList = styled.ul`
+	display: flex;
+	align-items: center;
+	gap: 8px;
+
+	list-style: none;
+`;
 
 export const Link = styled(NavLink)`
-	display: inline-block;
-	text-decoration: none;
-	padding: 12px;
-	font-weight: 700;
-	color: #000000;
-	font-size: 20px;
+	padding: 8px 16px;
 
-	&:hover {
-		color: #ffffff;
+	// font-size: 18px;
+	color: white;
+
+	border-radius: 8px;
+	text-decoration: none;
+	transition: background-color 1000ms
+		cubic-bezier(0.4, 0, 0.2, 1);
+	background-color: rgba(135, 207, 235, 0.1);
+
+	&:hover,
+	&:focus {
+		color: rgba(0, 0, 0, 0.4);
+		outline: none;
+		background-color: rgba(135, 207, 235, 0.3);
+	}
+
+	&.active {
+		color: rgba(0, 0, 0, 0.4);
+		background-color: rgba(135, 207, 235, 0.7);
 	}
 `;
