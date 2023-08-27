@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { Form, Field } from "formik";
 
-export const Form = styled.form`
+export const Forma = styled(Form)`
 	display: flex;
 	flex-direction: column;
 	width: 400px;
@@ -19,7 +20,7 @@ export const Label = styled.label`
 	font-size: 20px;
 `;
 
-export const Input = styled.input`
+export const Input = styled(Field)`
 	color: #171718;
 	padding: 8px 12px;
 	font: inherit;
