@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { Formik, ErrorMessage } from "formik";
 import * as yup from "yup";
-import { Notify } from "notiflix";
+
 import { logIn } from "redux/auth/operations";
 import {
 	Label,
