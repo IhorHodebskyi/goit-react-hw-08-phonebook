@@ -18,18 +18,9 @@ const initialValues = {
 };
 
 const schema = yup.object().shape({
-	name: yup
-		.string()
-		.required(() => Notify.info("Please enter a name")),
-	email: yup
-		.string()
-		.email()
-		.required(() => Notify.info("Please enter a email")),
-	password: yup
-		.string()
-		.min(6)
-		.max(16)
-		.required(() => Notify.info("Please enter a password")),
+	name: yup.string().required(),
+	email: yup.string().email().required(),
+	password: yup.string().min(6).max(16).required(),
 });
 
 export const RegisterForm = () => {

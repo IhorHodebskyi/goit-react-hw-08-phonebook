@@ -19,12 +19,8 @@ const initialValues = {
 };
 
 const schema = yup.object().shape({
-	name: yup
-		.string()
-		.required(() => Notify.info("Please enter a name")),
-	number: yup
-		.number()
-		.required(() => Notify.info("Please enter a number")),
+	name: yup.string().required(),
+	number: yup.number().required(),
 });
 
 export const ContactForm = () => {
