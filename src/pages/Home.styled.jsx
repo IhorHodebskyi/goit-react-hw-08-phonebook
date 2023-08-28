@@ -8,8 +8,6 @@ export const Wrapper = styled.div`
 `;
 
 export const Title = styled.h1`
-	font-weight: 900;
-	font-size: 48;
 	text-align: center;
 	color: #000000;
 `;

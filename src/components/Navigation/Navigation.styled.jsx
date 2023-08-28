@@ -1,12 +1,10 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
-export const Wrapper = styled.div`
-	/* display: flex;
+export const NavList = styled.ul`
+	display: flex;
 	align-items: center;
 	gap: 8px;
-
-	list-style: none; */
 `;
 
 export const Link = styled(NavLink)`

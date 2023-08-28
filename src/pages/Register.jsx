@@ -7,9 +7,6 @@ const Register = () => {
 		<>
 			<title>Registration</title>
 			<RegisterForm />
-			<Suspense>
-				<Outlet />
-			</Suspense>
 		</>
 	);
 };

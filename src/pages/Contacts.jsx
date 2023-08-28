@@ -22,9 +22,6 @@ const Tasks = () => {
 			{isLoading && <Loader />}
 
 			<ContactList />
-			<Suspense>
-				<Outlet />
-			</Suspense>
 		</>
 	);
 };

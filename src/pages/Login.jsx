@@ -7,9 +7,6 @@ const Login = () => {
 		<>
 			<title>Login</title>
 			<LoginForm />
-			<Suspense>
-				<Outlet />
-			</Suspense>
 		</>
 	);
 };

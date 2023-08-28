@@ -7,9 +7,6 @@ const Home = () => {
 		<>
 			<Wrapper>
 				<Title>Welcome to Phonebook!</Title>{" "}
-				<Suspense>
-					<Outlet />
-				</Suspense>
 			</Wrapper>
 		</>
 	);

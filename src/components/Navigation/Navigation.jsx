@@ -1,18 +1,21 @@
 import { useAuth } from "hooks/useAuth";
-import { Link, Wrapper } from "./Navigation.styled";
+import { Link, NavList } from "./Navigation.styled";
 
 export const Navigation = () => {
 	const { isLoggedIn } = useAuth();
 
 	return (
 		<nav>
-			<Wrapper>
-				{isLoggedIn ? (
-					<Link to="/contacts">Contacts</Link>
-				) : (
-					<Link to="/">Home</Link>
-				)}
-			</Wrapper>
+			<NavList>
+				<li>
+					{" "}
+					{isLoggedIn ? (
+						<Link to="/contacts">Contacts</Link>
+					) : (
+						<Link to="/">Home</Link>
+					)}
+				</li>
+			</NavList>
 		</nav>
 	);
 };
