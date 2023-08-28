@@ -1,5 +1,4 @@
 import { useSelector, useDispatch } from "react-redux";
-import { Filter } from "components/Filter/Filter";
 import { selectContacts } from "redux/contacts/selectors";
 import { addContacts } from "redux/contacts/operations";
 import {
@@ -85,7 +84,6 @@ export const ContactForm = () => {
 					</Button>
 				</Forma>
 			</Formik>
-			<Filter />
 		</>
 	);
 };

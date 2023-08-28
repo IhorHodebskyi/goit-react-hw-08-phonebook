@@ -7,6 +7,7 @@ export const Wrapper = styled.div`
 
 	font-size: 16px;
 	color: white;
+	padding-bottom: 16px;
 `;
 
 export const Text = styled.p`

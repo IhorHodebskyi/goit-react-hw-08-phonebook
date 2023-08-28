@@ -7,11 +7,16 @@ import { fetchContacts } from "redux/contacts/operations";
 import { Loader } from "../components/Loader/Loader";
 
 import { useAuth } from "hooks";
-import { selectVisibleContacts } from "redux/contacts/selectors";
+import {
+	selectContacts,
+	selectVisibleContacts,
+} from "redux/contacts/selectors";
+import { Filter } from "components/Filter/Filter";
 
 const Tasks = () => {
 	const dispatch = useDispatch();
 	const contacts = useSelector(selectVisibleContacts);
+	const items = useSelector(selectContacts);
 	const { isLoading } = useAuth();
 
 	useEffect(() => {
@@ -24,6 +29,7 @@ const Tasks = () => {
 			<ContactForm />
 			{isLoading && <Loader />}
 
+			{items.length > 0 && <Filter />}
 			{contacts.length > 0 && <ContactList />}
 		</>
 	);

@@ -8,7 +8,6 @@ export const Navigation = () => {
 		<nav>
 			<NavList>
 				<li>
-					{" "}
 					{isLoggedIn ? (
 						<Link to="/contacts">Contacts</Link>
 					) : (
