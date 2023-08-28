@@ -1,15 +1,18 @@
-import { Suspense, useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ContactForm } from "components/ContactForm/ContactForm";
 import { ContactList } from "components/ContactList/ContactList";
 import { fetchContacts } from "redux/contacts/operations";
-import { selectLoading } from "redux/contacts/selectors";
+
 import { Loader } from "../components/Loader/Loader";
-import { Outlet } from "react-router";
+
+import { useAuth } from "hooks";
+import { selectVisibleContacts } from "redux/contacts/selectors";
 
 const Tasks = () => {
 	const dispatch = useDispatch();
-	const isLoading = useSelector(selectLoading);
+	const contacts = useSelector(selectVisibleContacts);
+	const { isLoading } = useAuth();
 
 	useEffect(() => {
 		dispatch(fetchContacts());
@@ -21,7 +24,7 @@ const Tasks = () => {
 			<ContactForm />
 			{isLoading && <Loader />}
 
-			<ContactList />
+			{contacts.length > 0 && <ContactList />}
 		</>
 	);
 };

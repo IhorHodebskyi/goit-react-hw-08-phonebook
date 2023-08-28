@@ -4,7 +4,8 @@ import { NavLink } from "react-router-dom";
 export const NavList = styled.ul`
 	display: flex;
 	align-items: center;
-	gap: 8px;
+	padding: 0;
+	/* gap: 8px; */
 `;
 
 export const Link = styled(NavLink)`
