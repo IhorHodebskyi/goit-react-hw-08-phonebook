@@ -4,8 +4,9 @@ body {
 	margin: 0;
 
 	background-image: linear-gradient(
-			rgb(0, 0, 0, 0.9),
-			rgb(0, 0, 0, 0.4)
+			rgba(26, 29, 41, 0.9),
+			rgba(78, 77, 105, 0.4),
+			rgba(247, 232, 152, 0.4)
 		),
 		url("./images/1680581533_3-64.jpg");
 
