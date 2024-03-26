@@ -4,7 +4,7 @@ import { RegisterForm } from "components/RegisterForm/RegisterForm";
 
 const Register = () => {
 	const { isLoading } = useAuth();
-	console.log(isLoading);
+
 	return (
 		<>
 			<title>Registration</title>
