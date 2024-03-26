@@ -9,6 +9,7 @@ body {
 			rgba(247, 232, 152, 0.4)
 		),
 		url("./images/1680581533_3-64.jpg");
+	background-attachment: fixed;
 
 	background-position: center;
 	background-repeat: no-repeat;

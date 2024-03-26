@@ -17,17 +17,17 @@ const Tasks = () => {
 	const dispatch = useDispatch();
 	const contacts = useSelector(selectVisibleContacts);
 	const items = useSelector(selectContacts);
-	const { isLoading } = useAuth();
+	const { contactsIsLoading } = useAuth();
 
 	useEffect(() => {
 		dispatch(fetchContacts());
 	}, [dispatch]);
-
+	console.log(contactsIsLoading);
 	return (
 		<>
 			<title>Your contacts</title>
 			<ContactForm />
-			{isLoading && <Loader />}
+			{contactsIsLoading && <Loader />}
 
 			{items.length > 0 && <Filter />}
 			{contacts.length > 0 && <ContactList />}
