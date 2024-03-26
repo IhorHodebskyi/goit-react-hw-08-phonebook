@@ -1,7 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { Notify } from "notiflix";
-import { errorMessage } from "serves/error";
 
 export const fetchContacts = createAsyncThunk(
 	"contacts/fetchAll",
@@ -10,8 +8,6 @@ export const fetchContacts = createAsyncThunk(
 			const { data } = await axios.get("/api/contacts");
 			return data;
 		} catch (error) {
-			const { status } = error.response;
-			Notify.info(errorMessage(status));
 			return thunkAPI.rejectWithValue(error.message);
 		}
 	},
@@ -27,8 +23,6 @@ export const addContacts = createAsyncThunk(
 			});
 			return data;
 		} catch (error) {
-			const { status } = error.response;
-			Notify.info(errorMessage(status));
 			return thunkAPI.rejectWithValue(error.message);
 		}
 	},
@@ -43,8 +37,6 @@ export const deleteContacts = createAsyncThunk(
 			);
 			return data;
 		} catch (error) {
-			const { status } = error.response;
-			Notify.info(errorMessage(status));
 			return thunkAPI.rejectWithValue(error.message);
 		}
 	},
@@ -63,8 +55,6 @@ export const updateContact = createAsyncThunk(
 			);
 			return data;
 		} catch (error) {
-			const { status } = error.response;
-			Notify.info(errorMessage(status));
 			return thunkAPI.rejectWithValue(error.message);
 		}
 	},

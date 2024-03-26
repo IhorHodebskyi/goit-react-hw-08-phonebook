@@ -1,7 +1,6 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { Notify } from "notiflix";
-import { errorMessage } from "serves/error";
 
 axios.defaults.baseURL =
 	"https://backend-phone-book-omcv.onrender.com";
@@ -25,8 +24,8 @@ export const signUp = createAsyncThunk(
 			setAuthHeader(data.token);
 			return data;
 		} catch (error) {
-			const { status } = error.response;
-			Notify.info(errorMessage(status));
+			const { data } = error.response;
+			Notify.info(data.message);
 			return thunkAPI.rejectWithValue(error.message);
 		}
 	},
@@ -43,8 +42,8 @@ export const logIn = createAsyncThunk(
 			setAuthHeader(data.token);
 			return data;
 		} catch (error) {
-			const { status } = error.response;
-			Notify.info(errorMessage(status));
+			const { data } = error.response;
+			Notify.info(data.message);
 			return thunkAPI.rejectWithValue(error.message);
 		}
 	},
@@ -57,8 +56,6 @@ export const logOut = createAsyncThunk(
 			await axios.post("/users/logout");
 			clearAuthHeader();
 		} catch (error) {
-			const { status } = error.response;
-			Notify.info(errorMessage(status));
 			return thunkAPI.rejectWithValue(error.message);
 		}
 	},
@@ -81,8 +78,6 @@ export const refreshUser = createAsyncThunk(
 			const res = await axios.get("/users/current");
 			return res.data;
 		} catch (error) {
-			const { status } = error.response;
-			Notify.info(errorMessage(status));
 			return thunkAPI.rejectWithValue(error.message);
 		}
 	},
