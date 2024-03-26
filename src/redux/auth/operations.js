@@ -3,7 +3,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { Notify } from "notiflix";
 
 axios.defaults.baseURL =
-	"https://backend-phone-book-omcv.onrender.com";
+	"https://backend-phonebook-kfp6.onrender.com";
 
 const setAuthHeader = token => {
 	axios.defaults.headers.common.Authorization = `Bearer ${token}`;

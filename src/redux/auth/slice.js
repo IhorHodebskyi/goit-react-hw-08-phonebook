@@ -6,58 +6,37 @@ import {
 	refreshUser,
 } from "redux/auth/operations";
 import { initialState } from "./initialState";
-
-const handlePending = state => {
-	state.isLoading = false;
-};
+import {
+	handleLogInFulfilled,
+	handleLogOutFulfilled,
+	handlePending,
+	handleRefreshUserPending,
+	handleRejected,
+	handleSignUpFulfilled,
+} from "./handlers";
 
 const authSlice = createSlice({
 	name: "auth",
 	initialState,
 	extraReducers: builder => {
 		builder
-			.addCase(signUp.fulfilled, (state, { payload }) => {
-				state.user = payload.user;
-				state.token = payload.token;
-				state.isLoggedIn = true;
-				state.isLoading = false;
-			})
-			.addCase(logIn.fulfilled, (state, { payload }) => {
-				state.user = payload.user;
-				state.token = payload.token;
-				state.isLoggedIn = true;
-				state.isLoading = false;
-			})
-			.addCase(logOut.fulfilled, state => {
-				state.user = { name: null, email: null };
-				state.token = null;
-				state.isLoggedIn = false;
-				state.isLoading = false;
-				state.error = null;
-			})
-			.addCase(refreshUser.pending, state => {
-				state.isRefreshing = true;
-			})
+			.addCase(signUp.fulfilled, handleSignUpFulfilled)
+			.addCase(logIn.fulfilled, handleLogInFulfilled)
+			.addCase(logOut.fulfilled, handleLogOutFulfilled)
 			.addCase(
-				refreshUser.fulfilled,
-				(state, { payload }) => {
-					state.user = payload;
-					state.isLoggedIn = true;
-					state.isRefreshing = false;
-					state.isLoading = false;
-				},
-			)
-			.addCase(
-				refreshUser.rejected,
-				(state, { payload }) => {
-					state.isRefreshing = false;
-					state.error = payload;
-					state.isLoading = false;
-				},
+				refreshUser.pending,
+				handleRefreshUserPending,
 			)
 			.addMatcher(
 				action => action.type.endsWith("/pending"),
 				handlePending,
+			)
+			.addMatcher(action =>
+				action.type.endsWith("/fulfilled"),
+			)
+			.addMatcher(
+				action => action.type.endsWith("/rejected"),
+				handleRejected,
 			);
 	},
 });
