@@ -24,7 +24,6 @@ export const LoginForm = () => {
 	const dispatch = useDispatch();
 
 	const handleSubmit = (values, { resetForm }) => {
-		console.log(values);
 		dispatch(logIn(values));
 		resetForm();
 	};

@@ -12,16 +12,22 @@ export const ContactList = () => {
 
 	return (
 		<List>
-			{contacts.map(contact => (
-				<Item key={contact.id}>
+			{contacts?.map(contact => (
+				<Item key={contact._id}>
 					{contact.name + " : " + contact.number}
 					{
 						<Button
 							type="button"
 							name="delete"
-							onClick={() => dispatch(deleteContacts(contact.id))}
+							onClick={() =>
+								dispatch(deleteContacts(contact._id))
+							}
 						>
-							<DeleteIcon fill="#000000" width="20" height="20" />
+							<DeleteIcon
+								fill="#000000"
+								width="20"
+								height="20"
+							/>
 							delete
 						</Button>
 					}

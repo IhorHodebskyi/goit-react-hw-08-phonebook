@@ -27,12 +27,13 @@ export const ContactForm = () => {
 	const dispatch = useDispatch();
 
 	const handleSubmit = (values, { resetForm }) => {
-		console.log(values.name);
-		const isInContacts = contacts.some(
-			contact =>
-				contact.name.toLowerCase() ===
-				values.name.toLowerCase(),
-		);
+		const isInContacts =
+			contacts.length > 0 &&
+			contacts.some(
+				contact =>
+					contact.name.toLowerCase() ===
+					values.name.toLowerCase(),
+			);
 
 		if (isInContacts) {
 			Notify.info(`${values.name} already in contact☝️`);

@@ -1,13 +1,24 @@
-export const handleFulfilledContacts = (state, { payload }) => {
+export const handleFulfilledContacts = (
+	state,
+	{ payload },
+) => {
 	state.items = payload;
 };
 
-export const handleFulfilledAddContact = (state, { payload }) => {
+export const handleFulfilledAddContact = (
+	state,
+	{ payload },
+) => {
 	state.items.unshift(payload);
 };
 
-export const handleFulfilledDelete = (state, { payload }) => {
-	state.items = state.items.filter(items => items.id !== payload.id);
+export const handleFulfilledDelete = (
+	state,
+	{ payload },
+) => {
+	state.items = state.items.filter(
+		item => item._id !== payload._id,
+	);
 };
 
 export const handleFulfilled = state => {
