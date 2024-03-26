@@ -26,7 +26,6 @@ export const handleFulfilledUpdateContact = (
 	{ payload },
 ) => {
 	state.items = state.items.map(item => {
-		console.log(item);
 		if (item._id === payload._id) {
 			return {
 				...item,

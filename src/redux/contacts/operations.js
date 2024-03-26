@@ -1,5 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { Notify } from "notiflix";
+import { errorMessage } from "servis/error";
 
 export const fetchContacts = createAsyncThunk(
 	"contacts/fetchAll",
@@ -8,6 +10,8 @@ export const fetchContacts = createAsyncThunk(
 			const { data } = await axios.get("/api/contacts");
 			return data;
 		} catch (error) {
+			const { status } = error.response;
+			Notify.info(errorMessage(status));
 			return thunkAPI.rejectWithValue(error.message);
 		}
 	},
@@ -23,6 +27,8 @@ export const addContacts = createAsyncThunk(
 			});
 			return data;
 		} catch (error) {
+			const { status } = error.response;
+			Notify.info(errorMessage(status));
 			return thunkAPI.rejectWithValue(error.message);
 		}
 	},
@@ -37,6 +43,8 @@ export const deleteContacts = createAsyncThunk(
 			);
 			return data;
 		} catch (error) {
+			const { status } = error.response;
+			Notify.info(errorMessage(status));
 			return thunkAPI.rejectWithValue(error.message);
 		}
 	},
@@ -45,9 +53,6 @@ export const deleteContacts = createAsyncThunk(
 export const updateContact = createAsyncThunk(
 	"contacts/putContact",
 	async ({ contactId, name, number }, thunkAPI) => {
-		console.log("contactId", contactId);
-		console.log("name", name);
-		console.log("number", number);
 		try {
 			const { data } = await axios.put(
 				`/api/contacts/${contactId}`,
@@ -56,9 +61,10 @@ export const updateContact = createAsyncThunk(
 					number,
 				},
 			);
-			console.log(data);
 			return data;
 		} catch (error) {
+			const { status } = error.response;
+			Notify.info(errorMessage(status));
 			return thunkAPI.rejectWithValue(error.message);
 		}
 	},

@@ -1,9 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { signUp, logIn, logOut, refreshUser } from "redux/auth/operations";
+import {
+	signUp,
+	logIn,
+	logOut,
+	refreshUser,
+} from "redux/auth/operations";
 import { initialState } from "./initialState";
 
 const handlePending = state => {
-	state.isLoading = true;
+	state.isLoading = false;
 };
 
 const authSlice = createSlice({
@@ -33,17 +38,23 @@ const authSlice = createSlice({
 			.addCase(refreshUser.pending, state => {
 				state.isRefreshing = true;
 			})
-			.addCase(refreshUser.fulfilled, (state, { payload }) => {
-				state.user = payload;
-				state.isLoggedIn = true;
-				state.isRefreshing = false;
-				state.isLoading = false;
-			})
-			.addCase(refreshUser.rejected, (state, { payload }) => {
-				state.isRefreshing = false;
-				state.error = payload;
-				state.isLoading = false;
-			})
+			.addCase(
+				refreshUser.fulfilled,
+				(state, { payload }) => {
+					state.user = payload;
+					state.isLoggedIn = true;
+					state.isRefreshing = false;
+					state.isLoading = false;
+				},
+			)
+			.addCase(
+				refreshUser.rejected,
+				(state, { payload }) => {
+					state.isRefreshing = false;
+					state.error = payload;
+					state.isLoading = false;
+				},
+			)
 			.addMatcher(
 				action => action.type.endsWith("/pending"),
 				handlePending,
