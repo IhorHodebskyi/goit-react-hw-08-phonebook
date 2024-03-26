@@ -21,6 +21,23 @@ export const handleFulfilledDelete = (
 	);
 };
 
+export const handleFulfilledUpdateContact = (
+	state,
+	{ payload },
+) => {
+	state.items = state.items.map(item => {
+		console.log(item);
+		if (item._id === payload._id) {
+			return {
+				...item,
+				name: payload.name,
+				number: payload.number,
+			};
+		}
+		return item;
+	});
+};
+
 export const handleFulfilled = state => {
 	state.isLoading = false;
 	state.error = null;

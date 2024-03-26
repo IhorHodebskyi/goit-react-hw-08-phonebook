@@ -22,7 +22,7 @@ const Tasks = () => {
 	useEffect(() => {
 		dispatch(fetchContacts());
 	}, [dispatch]);
-	console.log(contactsIsLoading);
+
 	return (
 		<>
 			<title>Your contacts</title>
