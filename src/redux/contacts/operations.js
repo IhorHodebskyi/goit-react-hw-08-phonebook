@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { Notify } from "notiflix";
-import { errorMessage } from "servis/error";
+import { errorMessage } from "serves/error";
 
 export const fetchContacts = createAsyncThunk(
 	"contacts/fetchAll",

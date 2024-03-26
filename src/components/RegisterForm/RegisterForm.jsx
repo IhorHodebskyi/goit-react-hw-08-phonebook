@@ -9,8 +9,6 @@ import {
 	Label,
 } from "./RegisterForm.styles";
 import * as yup from "yup";
-import { Notify } from "notiflix";
-import { useAuth } from "hooks";
 
 const initialValues = {
 	name: "",

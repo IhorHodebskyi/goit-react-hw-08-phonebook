@@ -1,7 +1,7 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { Notify } from "notiflix";
-import { errorMessage } from "servis/error";
+import { errorMessage } from "serves/error";
 
 axios.defaults.baseURL =
 	"https://backend-phone-book-omcv.onrender.com";
