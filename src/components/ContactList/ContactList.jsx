@@ -9,7 +9,7 @@ export const ContactList = () => {
 	const contacts = useSelector(selectVisibleContacts);
 
 	return (
-		<List>
+		<List key="key">
 			{contacts.map(({ _id, name, number }) => (
 				<Contact _id={_id} name={name} number={number} />
 			))}
