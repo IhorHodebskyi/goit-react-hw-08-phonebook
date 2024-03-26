@@ -7,6 +7,7 @@ import {
 } from "redux/auth/operations";
 import { initialState } from "./initialState";
 import {
+	handleFulfilled,
 	handleLogInFulfilled,
 	handleLogOutFulfilled,
 	handlePending,
@@ -31,8 +32,9 @@ const authSlice = createSlice({
 				action => action.type.endsWith("/pending"),
 				handlePending,
 			)
-			.addMatcher(action =>
-				action.type.endsWith("/fulfilled"),
+			.addMatcher(
+				action => action.type.endsWith("/fulfilled"),
+				handleFulfilled,
 			)
 			.addMatcher(
 				action => action.type.endsWith("/rejected"),
