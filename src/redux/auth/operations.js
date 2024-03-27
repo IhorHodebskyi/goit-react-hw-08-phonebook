@@ -2,9 +2,10 @@ import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { Notify } from "notiflix";
 
-axios.defaults.baseURL =
-	"https://backend-phonebook-kfp6.onrender.com";
+// axios.defaults.baseURL =
+// 	"https://backend-phonebook-kfp6.onrender.com";
 
+axios.defaults.baseURL = "http://localhost:4065";
 const setAuthHeader = token => {
 	axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
@@ -75,8 +76,8 @@ export const refreshUser = createAsyncThunk(
 			}
 
 			setAuthHeader(persistedToken);
-			const res = await axios.get("/users/current");
-			return res.data;
+			const { data } = await axios.get("/users/current");
+			return data;
 		} catch (error) {
 			return thunkAPI.rejectWithValue(error.message);
 		}

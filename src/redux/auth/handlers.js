@@ -26,17 +26,20 @@ export const handleLogOutFulfilled = state => {
 	state.error = null;
 };
 
-export const handleRefreshUserPending = state => {
-	state.isRefreshing = false;
+export const handleRefreshUserPending = (
+	state,
+	{ payload },
+) => {
+	state.user = payload;
+	state.isRefreshing = true;
+	state.isLoggedIn = true;
 };
 
 export const handlePending = state => {
 	state.isLoading = true;
 };
 
-export const handleFulfilled = (state, { payload }) => {
-	state.user = payload;
-	state.isLoggedIn = true;
+export const handleFulfilled = state => {
 	state.isRefreshing = false;
 	state.isLoading = false;
 };

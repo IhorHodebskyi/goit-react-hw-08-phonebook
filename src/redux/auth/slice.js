@@ -25,10 +25,10 @@ const authSlice = createSlice({
 			.addCase(logIn.fulfilled, handleLogInFulfilled)
 			.addCase(logOut.fulfilled, handleLogOutFulfilled)
 			.addCase(
-				refreshUser.pending,
+				refreshUser.fulfilled,
 				handleRefreshUserPending,
 			)
-			.addMatcher(
+			.addCase(
 				action => action.type.endsWith("/pending"),
 				handlePending,
 			)

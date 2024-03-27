@@ -7,10 +7,9 @@ import { Wrapper, Text, Button } from "./UserMenu.styled";
 export const UserMenu = () => {
 	const { name } = useSelector(selectUser);
 	const dispatch = useDispatch();
-
 	return (
 		<Wrapper>
-			<Text>Welcome to Phonebook {name} </Text>
+			<Text>Welcome to Phone Book {name} </Text>
 			<Button
 				type="button"
 				onClick={() => dispatch(logOut())}
