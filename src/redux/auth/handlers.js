@@ -27,7 +27,7 @@ export const handleLogOutFulfilled = state => {
 };
 
 export const handleRefreshUserPending = state => {
-	state.isRefreshing = true;
+	state.isRefreshing = false;
 };
 
 export const handlePending = state => {
