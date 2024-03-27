@@ -2,10 +2,9 @@ import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { Notify } from "notiflix";
 
-// axios.defaults.baseURL =
-// 	"https://backend-phonebook-kfp6.onrender.com";
+axios.defaults.baseURL =
+	"https://backend-phonebook-kfp6.onrender.com";
 
-axios.defaults.baseURL = "http://localhost:4065";
 const setAuthHeader = token => {
 	axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
