@@ -28,7 +28,7 @@ const authSlice = createSlice({
 				refreshUser.fulfilled,
 				handleRefreshUserPending,
 			)
-			.addCase(
+			.addMatcher(
 				action => action.type.endsWith("/pending"),
 				handlePending,
 			)
