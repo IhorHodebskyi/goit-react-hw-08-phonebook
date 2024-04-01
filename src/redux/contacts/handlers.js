@@ -9,7 +9,7 @@ export const handleFulfilledAddContact = (
 	state,
 	{ payload },
 ) => {
-	state.items.unshift(payload);
+	state.items.push(payload);
 };
 
 export const handleFulfilledDelete = (
